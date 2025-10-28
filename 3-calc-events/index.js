@@ -1,15 +1,15 @@
-const EventEmmiter = require("events");
-const emmiter = new EventEmmiter();
+const EventEmitter = require("events");
+const emitter = new EventEmitter();
 
 const add = require("./add");
 const multiply = require("./multiply");
 
-emmiter.addListener("add", add);
-emmiter.addListener("multiply", multiply);
+emitter.addListener("add", add);
+emitter.addListener("multiply", multiply);
 
-let firstNum = process.argv[3];
-let secondNum = process.argv[4];
-let command = process.argv[5];
+let firstNum = process.argv[2];
+let secondNum = process.argv[3];
+let command = process.argv[4];
 
 if (!command) {
   throw new Error("Укажите команду");
@@ -18,9 +18,9 @@ if (!command) {
 if (!firstNum || !secondNum) throw new Error("Передайте 2 значения");
 
 if (command === "add") {
-  emmiter.emit("add", firstNum, secondNum);
+  emitter.emit("add", firstNum, secondNum);
 }
 
 if (command === "multiply") {
-  emmiter.emit("multiply", firstNum, secondNum);
+  emitter.emit("multiply", firstNum, secondNum);
 }
