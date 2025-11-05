@@ -22,8 +22,6 @@ function getTimeValue(value) {
   return parseInt(number);
 }
 
-getTimeValue(hours);
-
 function parseTime(hours, minutes, seconds) {
   let secondsFromHours = 0,
     secondsFromMinutes = 0,
