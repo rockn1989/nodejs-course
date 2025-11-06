@@ -26,7 +26,8 @@ for (let i = 0; i < mainArray.length; i += chunkSize) {
 }
 
 performance.mark("linear run start");
-compute(mainArray);
+const linearResult = compute(mainArray);
+console.log(`Линейно: ${linearResult.length} чисел`);
 performance.mark("linear run end");
 performance.measure("linear run", "linear run start", "linear run end");
 
@@ -50,11 +51,12 @@ function workerFunction(array) {
 
 async function main() {
   try {
-    // const result = await Promise.all([compute({ array: mainArray })]);
-    for await (arr of subArrays) {
-      workerFunction(arr);
-    }
-    await workerFunction(mainArray);
+    const results = await Promise.all(
+      subArrays.map((arr) => workerFunction(arr))
+    );
+
+    const totalCount = results.reduce((sum, result) => sum + result.length, 0);
+    console.log(`Количество чисел, делящихся на 3: ${totalCount}`);
   } catch (error) {
     console.error(error.message);
   }
