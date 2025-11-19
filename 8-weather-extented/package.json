@@ -1,0 +1,29 @@
+{
+  "name": "weather-cli-rockn",
+  "version": "1.0.0",
+  "description": "CLI for getting weather",
+  "keywords": [
+    "cli",
+    "weather"
+  ],
+  "license": "ISC",
+  "author": "Artem Ryabkov",
+  "type": "module",
+  "main": "weather.js",
+  "bin": {
+    "weather": "weather.js"
+  },
+  "scripts": {
+    "start": "node weather.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "homepage": "https://poe-frontend-pi.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rockn1989"
+  },
+  "dependencies": {
+    "chalk": "5.6.2",
+    "dedent-js": "1.0.1"
+  }
+}
